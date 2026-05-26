@@ -23,8 +23,6 @@
  */
 const MODEL = "grok-4.3";
 
-/** رابط XAI API */
-const XAI_API_URL = "https://api.x.ai/v1/chat/completions";
 
 /** الحد الأقصى للتوكنات في الرد */
 const MAX_TOKENS = 900;
