@@ -43,12 +43,10 @@ export default async function handler(req, res) {
     const data = await response.json();
 
     if (!response.ok) {
-        console.log("xAI error:", JSON.stringify(data, null, 2));
-
-        return res.status(response.status).json({
-            error: data?.error?.message || JSON.stringify(data) || "حدث خطأ من خادم الذكاء الاصطناعي."
-        });
-        }
+      return res.status(response.status).json({
+        error: data?.error?.message || JSON.stringify(data)
+      });
+    }
 
     const dua = data?.choices?.[0]?.message?.content;
 
