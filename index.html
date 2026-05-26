@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Najwaa</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Amiri for Arabic body, Scheherazade for display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Scheherazade+New:wght@400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- خلفية الزخرفة الإسلامية -->
+  <div class="bg-pattern" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <div class="page-wrapper">
+
+    <!-- الترويسة -->
+    <header class="site-header">
+      <div class="ornament top-ornament" aria-hidden="true">
+        <span class="ornament-line"></span>
+        <span class="ornament-diamond">❖</span>
+        <span class="ornament-line"></span>
+      </div>
+      <p class="bismillah">بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيمِ</p>
+      <h1 class="site-title">اكتب حاجتك</h1>
+      <h2 class="site-subtitle">وخذ دعاءً مناسباً</h2>
+      <p class="site-desc">
+        اكتب ما تريد أن تدعو به، وسيُكتب لك دعاء بأسلوب إيماني هادئ ومؤثر
+      </p>
+      <div class="ornament bottom-ornament" aria-hidden="true">
+        <span class="ornament-line"></span>
+        <span class="ornament-diamond">❖</span>
+        <span class="ornament-line"></span>
+      </div>
+    </header>
+
+    <!-- النموذج الرئيسي -->
+    <main class="main-card">
+
+      <div class="input-section">
+        <label for="user-need" class="input-label">
+          <span class="label-icon" aria-hidden="true">🤲</span>
+          ما حاجتك؟
+        </label>
+        <textarea
+          id="user-need"
+          class="need-textarea"
+          placeholder="مثال: أبغى أدعي بالرزق... أبغى أدعي بالزواج... أبغى أدعي بترك الحرام..."
+          rows="4"
+          maxlength="500"
+          aria-describedby="char-count"
+        ></textarea>
+        <div class="textarea-footer">
+          <span id="char-count" class="char-count">0 / 500</span>
+          <span class="enter-hint">Ctrl + Enter للإرسال</span>
+        </div>
+      </div>
+
+      <button id="generate-btn" class="generate-btn" type="button">
+        <span class="btn-text">اكتب الدعاء</span>
+        <span class="btn-icon" aria-hidden="true">✦</span>
+      </button>
+
+      <!-- حالة التحميل -->
+      <div id="loading-state" class="loading-state hidden" aria-live="polite">
+        <div class="loading-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <p class="loading-text">جاري كتابة الدعاء...</p>
+      </div>
+
+      <!-- رسالة الخطأ -->
+      <div id="error-message" class="error-message hidden" role="alert">
+        <span class="error-icon" aria-hidden="true">⚠</span>
+        <span id="error-text"></span>
+      </div>
+
+      <!-- نتيجة الدعاء -->
+      <div id="result-section" class="result-section hidden" aria-live="polite">
+        <div class="result-header">
+          <span class="result-label">
+            <span aria-hidden="true">🌙</span> دعاؤك
+          </span>
+          <button id="copy-btn" class="copy-btn" type="button" title="نسخ الدعاء">
+            <span class="copy-icon" aria-hidden="true">⧉</span>
+            <span class="copy-text">نسخ</span>
+          </button>
+        </div>
+        <div id="dua-output" class="dua-output"></div>
+        <div id="copy-feedback" class="copy-feedback hidden">تم النسخ ✓</div>
+      </div>
+
+    </main>
+
+    <!-- التذييل -->
+    <footer class="site-footer">
+      <div class="ornament footer-ornament" aria-hidden="true">
+        <span class="ornament-line short"></span>
+        <span class="ornament-diamond small">✦</span>
+        <span class="ornament-line short"></span>
+      </div>
+      <p class="footer-note">
+        الأدعية مبنية على معانٍ شرعية عامة — تحقق من العلماء لما تنسبه للنبي ﷺ
+      </p>
+    </footer>
+
+  </div><!-- /page-wrapper -->
+
+  <script src="script.js"></script>
+</body>
+</html>

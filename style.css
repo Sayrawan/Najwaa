@@ -1,0 +1,554 @@
+/* =========================================================
+   style.css — موقع توليد الأدعية
+   تصميم: إسلامي كلاسيكي هادئ، ألوان ذهبية وعاجية داكنة
+   ========================================================= */
+
+/* ── متغيرات التصميم ── */
+:root {
+  --bg-deep:      #0d0f0e;
+  --bg-card:      #141810;
+  --bg-card2:     #1a1f16;
+  --border-gold:  #b8962e;
+  --border-soft:  #2a3028;
+  --gold-light:   #e0b84e;
+  --gold-pale:    #f5d98a;
+  --cream:        #f0e6c8;
+  --cream-dim:    #c8b898;
+  --text-main:    #ede0c4;
+  --text-dim:     #9a9080;
+  --text-error:   #e07060;
+  --accent-glow:  rgba(184, 150, 46, 0.18);
+  --shadow-card:  0 8px 48px rgba(0,0,0,0.55), 0 2px 12px rgba(0,0,0,0.3);
+  --radius-card:  18px;
+  --radius-btn:   12px;
+  --font-display: 'Scheherazade New', serif;
+  --font-body:    'Amiri', serif;
+  --transition:   0.25s ease;
+}
+
+/* ── ريست وقاعدة ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 18px;
+  line-height: 1.8;
+  direction: rtl;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── خلفية الزخرفة ── */
+.bg-pattern {
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(184,150,46,0.06) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(184,150,46,0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bg-glow {
+  position: fixed;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(184,150,46,0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── غلاف الصفحة ── */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* ── الترويسة ── */
+.site-header {
+  text-align: center;
+  margin-bottom: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeDown 0.7s ease both;
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bismillah {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  color: var(--gold-light);
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+  text-shadow: 0 0 20px rgba(224,184,78,0.3);
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  font-weight: 700;
+  color: var(--gold-pale);
+  line-height: 1.2;
+  text-shadow: 0 2px 24px rgba(184,150,46,0.35);
+  margin-bottom: 0;
+}
+
+.site-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  font-weight: 500;
+  color: var(--cream-dim);
+  margin-top: -2px;
+}
+
+.site-desc {
+  font-size: 1rem;
+  color: var(--text-dim);
+  max-width: 480px;
+  text-align: center;
+  line-height: 1.7;
+  margin-top: 6px;
+}
+
+/* ── زخارف الفاصل ── */
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.top-ornament { margin: 10px 0 14px; }
+.bottom-ornament { margin: 14px 0 0; }
+.footer-ornament { margin: 0 0 12px; }
+
+.ornament-line {
+  flex: 1;
+  max-width: 160px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+  opacity: 0.6;
+}
+
+.ornament-line.short { max-width: 60px; }
+
+.ornament-diamond {
+  color: var(--border-gold);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.ornament-diamond.small { font-size: 0.7rem; }
+
+/* ── البطاقة الرئيسية ── */
+.main-card {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-card);
+  padding: 36px 32px 32px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+  animation: fadeUp 0.7s 0.15s ease both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* خط ذهبي علوي للبطاقة */
+.main-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--border-gold), transparent);
+}
+
+/* ── قسم الإدخال ── */
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-label {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.label-icon {
+  font-size: 1.1rem;
+}
+
+.need-textarea {
+  width: 100%;
+  background: var(--bg-card2);
+  border: 1.5px solid var(--border-soft);
+  border-radius: 12px;
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  padding: 14px 16px;
+  resize: vertical;
+  min-height: 110px;
+  direction: rtl;
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.need-textarea::placeholder {
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+.need-textarea:focus {
+  border-color: var(--border-gold);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.textarea-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.char-count {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  font-family: monospace;
+  direction: ltr;
+}
+
+.enter-hint {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  opacity: 0.7;
+}
+
+/* ── زر توليد الدعاء ── */
+.generate-btn {
+  width: 100%;
+  padding: 16px 28px;
+  background: linear-gradient(135deg, #b8962e 0%, #e0b84e 50%, #b8962e 100%);
+  border: none;
+  border-radius: var(--radius-btn);
+  color: #1a1400;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: filter var(--transition), transform var(--transition), opacity var(--transition);
+  box-shadow: 0 4px 20px rgba(184,150,46,0.35);
+  letter-spacing: 0.01em;
+}
+
+.generate-btn:hover:not(:disabled) {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(184,150,46,0.5);
+}
+
+.generate-btn:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+.generate-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-icon {
+  font-size: 1rem;
+  animation: spin-slow 8s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── حالة التحميل ── */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+}
+
+.loading-dots {
+  display: flex;
+  gap: 8px;
+  direction: ltr;
+}
+
+.loading-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold-light);
+  animation: bounce-dot 1.2s ease-in-out infinite;
+}
+
+.loading-dots span:nth-child(2) { animation-delay: 0.2s; }
+.loading-dots span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce-dot {
+  0%, 100% { opacity: 0.3; transform: scale(0.7); }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+.loading-text {
+  color: var(--gold-light);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+/* ── رسالة الخطأ ── */
+.error-message {
+  background: rgba(224,112,96,0.1);
+  border: 1px solid rgba(224,112,96,0.4);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--text-error);
+  font-size: 0.95rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.error-icon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── قسم النتيجة ── */
+.result-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.result-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--gold-light);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.copy-btn {
+  background: var(--bg-card2);
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;
+  color: var(--cream-dim);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+
+.copy-btn:hover {
+  background: var(--border-soft);
+  border-color: var(--border-gold);
+  color: var(--gold-light);
+}
+
+.copy-icon {
+  font-size: 1rem;
+}
+
+/* ── نص الدعاء ── */
+.dua-output {
+  background: var(--bg-card2);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  padding: 24px 22px;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 2.1;
+  color: var(--cream);
+  white-space: pre-wrap;
+  word-break: break-word;
+  direction: rtl;
+  text-align: right;
+  position: relative;
+}
+
+/* خط جانبي ذهبي */
+.dua-output::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  right: 0;
+  width: 3px;
+  height: calc(100% - 32px);
+  background: linear-gradient(180deg, transparent, var(--border-gold), transparent);
+  border-radius: 4px;
+}
+
+/* ── رسالة النسخ ── */
+.copy-feedback {
+  text-align: center;
+  color: var(--gold-light);
+  font-size: 0.9rem;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ── الأدوات المساعدة ── */
+.hidden {
+  display: none !important;
+}
+
+/* ── التذييل ── */
+.site-footer {
+  margin-top: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+.footer-note {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  max-width: 380px;
+  line-height: 1.6;
+  opacity: 0.75;
+}
+
+/* ── تجاوب الجوال ── */
+@media (max-width: 600px) {
+  .page-wrapper {
+    padding: 28px 16px 48px;
+  }
+
+  .main-card {
+    padding: 24px 18px 20px;
+    gap: 18px;
+  }
+
+  .site-title {
+    font-size: 2.2rem;
+  }
+
+  .site-subtitle {
+    font-size: 1.25rem;
+  }
+
+  .site-desc {
+    font-size: 0.92rem;
+  }
+
+  .generate-btn {
+    font-size: 1.1rem;
+    padding: 14px 20px;
+  }
+
+  .dua-output {
+    font-size: 1.1rem;
+    padding: 18px 16px;
+    line-height: 2;
+  }
+
+  .enter-hint {
+    display: none;
+  }
+
+  .ornament-line {
+    max-width: 80px;
+  }
+}
+
+@media (max-width: 380px) {
+  .site-title { font-size: 1.8rem; }
+  .main-card  { padding: 18px 14px; }
+}
+
+/* ── شريط التمرير ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb {
+  background: var(--border-soft);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--border-gold); }
+
+/* ── تحديد النص ── */
+::selection {
+  background: rgba(184,150,46,0.35);
+  color: var(--cream);
+}
